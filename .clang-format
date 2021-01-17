@@ -1,0 +1,37 @@
+# for installation of clang see https://llvm.org/builds/
+#     windows: use exe based installer, select option 'add llvm to path for all users'
+#     vscode:
+#         install the Clang-Format extension by author xaver
+#         add the following to your settings; ctrl+shift+p then type 'open settings (JSON)'
+#             "clang-format.style": "file",
+#             "editor.formatOnSave": true,
+
+BasedOnStyle: LLVM
+AccessModifierOffset: -2
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+BinPackArguments: false
+BinPackParameters: false
+BraceWrapping:
+    AfterCaseLabel: false
+    AfterClass: false
+    AfterControlStatement: false
+    AfterEnum: false
+    AfterFunction: false
+    AfterNamespace: false
+    AfterObjCDeclaration: false
+    AfterStruct: false
+    AfterUnion: false
+    BeforeCatch: false
+    BeforeElse: false
+    BeforeLambdaBody: false
+    IndentBraces: false
+BreakBeforeBraces: Custom
+ColumnLimit: 120
+DerivePointerAlignment: false
+IncludeBlocks: Merge
+IndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: false

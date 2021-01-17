@@ -1,0 +1,1 @@
+$profile_path = "$($HOME)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
