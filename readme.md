@@ -9,26 +9,39 @@
     shells to be referenced in the 'usage' below
         gitBash is a type of windows shell
         powershell is a type of windows shell
-        terminal is a unix/linux shell
+        terminal is a linux/unix bash shell
 ### usage:
     clone repo wherever you'd like
         via gitBash/terminal
-            `cd "${HOME}"` # can be any dir of your choice
-            `git clone https://github.com/AceGene/gene-ws.git`
+```
+            cd "${HOME}" # can be any dir of your choice
+            git clone https://github.com/AceGene/gene-ws.git
+```
     clone subrepos
         via gitBash/powershell/terminal
-            `cd gene-ws`
-            `git submodule init`
-           `git submodule deinit "repos/lew"; git -c submodule."repos/lew".update=none submodule update --recursive`
-           `git submodule foreach --recursive 'git submodule update --recursive --init || :'`
-           `{ git checkout master && git pull; } || { git checkout main && git pull; } || :`
+```
+            cd gene-ws
+            git submodule init
+            git submodule deinit "repos/lew"; git -c submodule."repos/lew".update=none submodule update --recursive
+            git submodule foreach --recursive 'git submodule update --recursive --init || :'
+            git submodule foreach '{ git checkout master && git pull; } || { git checkout main && git pull; } || :'
+```
     init cfgs for shells
-        init for gitBash or wsl
+        if OS == windows
             via gitBash
-                `cd gene-ws && init/init.bash`
+```
+                cd gene-ws && init/init.bash --os windows
+```
+        if OS == Linux or OS == Unix
+            via terminal
+```
+                cd gene-ws && init/init.bash --os linux # 
+```
         init for powershell
             via powershell
-                `cd gene-ws; init/init.ps1`
+```
+                cd gene-ws; init/init.ps1
+```
 ### subrepos description:
     repos/aliases
         aliases, shell profile cfg
