@@ -87,6 +87,13 @@ function _init {
     if ($file_str -eq $null){
         echo $prof_cmd >> $profile_path
     }
+    if ($(((Get-Content -Raw $profile_path_2) -split '\n')[-1]) -ne ''){
+        $prof_cmd = "`r`n$($prof_cmd)"
+    }
+    $file_str = Get-Content $profile_path_2 | Select-String -SimpleMatch $prof_cmd
+    if ($file_str -eq $null){
+        echo $prof_cmd >> $profile_path_2
+    }
     #### list scripts matching submodule/init/init.ps1
     $files = (Get-ChildItem -Recurse -File $dir_repo | Where-Object { $_.FullName -match "init\\init.ps1" }).FullName
     foreach ($file in $files){
