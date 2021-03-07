@@ -15,7 +15,7 @@
         via gitBash/terminal
 ```
             cd "${HOME}" # can be any dir of your choice
-            git clone https://github.com/AceGene/gene-ws.git
+            git clone git@github.com:AceGene/gene-ws.git
 ```
     clone subrepos
         via gitBash/powershell/terminal
