@@ -30,17 +30,17 @@
         if OS == windows
             via gitBash
 ```
-                cd gene-ws && init/init.bash --os windows
+                init/init.bash --os windows
 ```
         if OS == Linux or OS == Unix
             via terminal
 ```
-                cd gene-ws && init/init.bash --os linux # 
+                init/init.bash --os linux
 ```
         init for powershell
             via powershell
 ```
-                cd gene-ws; init/init.ps1
+                cd gene-ws; if($?){init/init.ps1}
 ```
 ### subrepos description:
     repos/aliases

@@ -1,25 +1,50 @@
-# for installation of clang see https://llvm.org/builds/
-#     windows: use exe based installer, select option 'add llvm to path for all users'
-#     vscode:
-#         install the Clang-Format extension by author xaver
-#         add the following to your settings; ctrl+shift+p then type 'open settings (JSON)'
-#             "clang-format.style": "file",
-#             "editor.formatOnSave": true,
+## for installation of clang see https://llvm.org/builds/
+##     windows: use exe based installer, select option 'add llvm to path for all users'
+##     usage in vscode:
+##         install the Clang-Format extension by author xaver
+##         add the following to your settings; ctrl+shift+p then type 'open settings (JSON)'
+##             "clang-format.style": "file",
+##             "editor.formatOnSave": true,
 
+## so many available stylings are defined this hardly matters, but a fallback shouldn't hurt...
 BasedOnStyle: LLVM
+
+## custom styling statements
+##     those followed by '#x' are not supported by clang 12
+##     those followed by '#*' are not necessary for myself and instead left to defaults
+##     those followed by '#?' are not understood fully
 AccessModifierOffset: -2
-AllowAllParametersOfDeclarationOnNextLine: false
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveBitFields: false
+AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: false
+AlignEscapedNewlines: true
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: false
+AllowAllArgumentsOnNextLine: true
+AllowAllConstructorInitializersOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: Empty
-AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
+AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: true
+# AttributeMacros: [] #*
 BinPackArguments: false
 BinPackParameters: false
+# BitFieldColonSpacing: Both #*
 BraceWrapping:
     AfterCaseLabel: false
     AfterClass: false
     AfterControlStatement: false
     AfterEnum: false
+    AfterExternBlock: true
     AfterFunction: false
     AfterNamespace: false
     AfterObjCDeclaration: false
@@ -28,10 +53,104 @@ BraceWrapping:
     BeforeCatch: false
     BeforeElse: false
     BeforeLambdaBody: false
+    BeforeWhile: false
     IndentBraces: false
-BreakBeforeBraces: Custom
+    SplitEmptyFunction: false
+    SplitEmptyRecord: false
+    SplitEmptyNamespace: true
+# BreakAfterJavaFieldAnnotations: false #*
+BreakBeforeBinaryOperators: All
+BreakBeforeBraces: Custom # see 'BraceWrapping' for custom details
+# BreakBeforeConceptDeclarations: #*
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakStringLiterals: false
 ColumnLimit: 120
+# CommentPragmas: REGEX #*
+CompactNamespaces: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+# ConstructorInitializerIndentWidth: 2 #?
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+DeriveLineEnding: true
 DerivePointerAlignment: false
-IncludeBlocks: Merge
+DisableFormat: false
+# EmptyLineBeforeAccessModifier: Always #x
+FixNamespaceComments: true
+# ForEachMacros: [] #*
+IncludeBlocks: Preserve
+# IncludeCategories: [] #*
+# IncludeIsMainRegex: REGEX #*
+# IncludeIsMainSourceRegex: RGEX #*
+# IndentAccessModifiers: false #x
+IndentCaseBlocks: false
+IndentCaseLabels: true
+IndentExternBlock: false
+# IndentGotoLabels: false #*
+IndentPPDirectives: None
+# IndentRequires: false #x
 IndentWidth: 4
+IndentWrappedFunctionNames: false
+# InsertTrailingCommas: None #*
+# JavaImportGroups: [] #*
+JavaScriptQuotes: Single
+JavaScriptWrapImports: true
 KeepEmptyLinesAtTheStartOfBlocks: false
+# Language: Cpp #*
+# MacroBlockBegin: REGEX #*
+# MacroBlockEnd: REGEX #*
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+# NamespaceMacros: [] #*
+ObjCBinPackProtocolList: Never
+# ObjCBlockIndentWidth 4 #x
+# ObjCBreakBeforeNestedBlockParam: false #?
+# ObjCSpaceAfterProperty: false #x
+# ObjCSpaceBeforeProtocolList: false #x
+# PenaltyBreakAssignment 2 #?
+# PenaltyBreakBeforeFirstCallParameter 2 #?
+# PenaltyBreakComment 2 #?
+# PenaltyBreakFirstLessLess 2 #?
+# PenaltyBreakString 2 #?
+# PenaltyBreakTemplateDeclaration 2 #?
+# PenaltyExcessCharacter 2 #?
+# PenaltyIndentedWhitespace 2 #?
+# PenaltyReturnTypeOnItsOwnLine 2 #?
+PointerAlignment: Left
+# RawStringFormats: [] #*
+# ReflowComments: false
+# ShortNamespaceLines: 0 #x
+# SortJavaStaticImport: After #x
+SortIncludes: true
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+# SpaceAroundPointerQualifiers: Default #x
+SpaceBeforeAssignmentOperators: true
+# SpaceBeforeCaseColon: false #x
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: false
+# SpacesInLineCommentPrefix: 1 -1 #x
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+# Standard: Cpp11 #*
+# StatementAttributeLikeMacros: [] #*
+# StatementMacros: [] #*
+TabWidth: 4
+# TypenameMacros: [] #*
+UseCRLF: false
+UseTab: Never
+# WhitespaceSensitiveMacros: [] #*
