@@ -8,7 +8,7 @@ set -u
 PATH_THIS="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd -P)/"$(basename -- "${BASH_SOURCE[0]}")""
 DIR_THIS="$(dirname -- "${PATH_THIS}")"
 BASE_THIS="$(basename -- "${PATH_THIS}")"
-[ -f "${PATH_THIS}" ] && [ -d "${DIR_THIS}" ] && [ -f "${DIR_THIS}/${BASE_THIS}" ] || ! >&2 echo "ERROR: could not generate paths" || exit 1
+[ -f "${PATH_THIS}" ] && [ -d "${DIR_THIS}" ] && [ -f "${DIR_THIS}/${BASE_THIS}" ] || ! >&2 echo "ERROR: ${BASE_THIS}: could not generate paths" || exit 1
 
 __parse_args(){
     while (( "${#}" )); do
@@ -16,14 +16,14 @@ __parse_args(){
             --operating-system|--os|-o)
                 case "${2}" in
                     linux|windows|wsl) os="${2}"; shift ;;
-                    *) echo "ERROR: unrecognized '${1}' parameter '${2}', available options are windows, linux, or wsl" && return 1 ;;
+                    *) >&2 echo "ERROR: ${BASE_THIS}: unrecognized '${1}' parameter '${2}', available options are windows, linux, or wsl" && return 1 ;;
                 esac
                 ;;
-            *) echo "ERROR: arg ${1} is unexpected" && return 2 ;;
+            *) >&2 echo "ERROR: ${BASE_THIS}: arg ${1} is unexpected" && return 2 ;;
         esac
         shift
     done
-    [ "${os}" != '' ] || ! echo "ERROR: --operating-system cmd arg is required" || return 3
+    [ "${os}" != '' ] || ! >&2 echo "ERROR: ${BASE_THIS}: --operating-system cmd arg is required" || return 3
 }
 
 ################&&!%@@%!&&################ AUTO GENERATED CODE BELOW THIS LINE ################&&!%@@%!&&################
@@ -150,9 +150,6 @@ _init() {
     #### hardcoded vars
     ## dirs
     local dir_repo="$(cd -- "${DIR_THIS}" && cd -- "$(git rev-parse --show-toplevel)" && echo "${PWD}")" && [ "${dir_repo}" != '' ] || ! __echo -se "ERROR: dir_repo=''" || return 1
-    local dir_git_hooks="${dir_repo}/.git-hooks"
-    local path_postcheckout_hook_gitignore="${dir_git_hooks}/gitignore/gitignore-gen.bash"
-    local path_postcheckout_hook_gitattributes="${dir_git_hooks}/gitattributes/gitattributes-gen.bash"
     ## files
     local bash_aliases="${HOME}/.bash_aliases"
     local bashrc="${HOME}/.bashrc"
@@ -161,16 +158,11 @@ _init() {
     local os=''
     #### parse cmd args and overwrite vars
     __parse_args "${@}" || return "1${?}"
-    #### setup git hooks
-    local dir_git_hooks_config="$(git -C "${dir_repo}" config --local core.hooksPath)"
-    [ "${dir_git_hooks_config}" != ${dir_git_hooks} ] && [ "${dir_git_hooks_config}" != '' ] && echo "WARNING: ${PATH_THIS}: overwriting old 'git config --local core.hooksPath' value of '${dir_git_hooks_config}'"
-    [ "${dir_git_hooks_config}" != ${dir_git_hooks} ] && echo "EXEC: git -C ${dir_repo} config --local core.hooksPath ${dir_git_hooks}" && (git -C "${dir_repo}" config --local core.hooksPath "${dir_git_hooks}")
-    [ -f "${path_postcheckout_hook_gitignore}" ] && { "${path_postcheckout_hook_gitignore}" && echo "EXEC: ${path_postcheckout_hook_gitignore}" || echo "ERROR: gitignore-gen.bash failed"; }
-    [ -f "${path_postcheckout_hook_gitattributes}" ] && { "${path_postcheckout_hook_gitattributes}" && echo "EXEC: ${path_postcheckout_hook_gitattributes}" || echo "ERROR: gitattributes-gen.bash failed"; }
     #### create arg lists for init scripts
     local args="--os ${os}"
     ## lines to add to files
     local lines_bash_aliases=("[ -f '${src}' ] && . '${src}'")
+    #### initialize submodules # TODO:
     #### list scripts matching submodule/init/init.bash
     local init_scripts=($(for g in $(find "${dir_repo}" -mindepth 2 -name ".git"); do local init="$(dirname "${g}")/init/init.bash"; [ -f "${init}" ] && echo "${init}"; done))
     for init_script in "${init_scripts[@]}"; do echo "${init_script}"; done
