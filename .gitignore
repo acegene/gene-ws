@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=batch,bazel,c,c++,clion,diff,git,java,jupyternotebooks,linux,macos,matlab,nohup,powershell,python,vim,visualstudio,visualstudiocode,windows,zsh
 .gitignore
 .gitattributes
+pyproject.toml
 ### Batch ###
 # BatchFiles
 *.bat
@@ -277,7 +278,7 @@ ipython_config.py
 .AppleDouble
 .LSOverride
 
-# Icon must end with two 
+# Icon must end with two
 Icon
 
 

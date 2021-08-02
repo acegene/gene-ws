@@ -4,8 +4,8 @@
 #### common
 ## documents
 *.bibtex      text eol=lf diff=bibtex
-*.doc	      diff=astextplain
-*.DOC	      diff=astextplain
+*.doc          diff=astextplain
+*.DOC          diff=astextplain
 *.docx        diff=astextplain
 *.DOCX        diff=astextplain
 *.dot         diff=astextplain
@@ -62,7 +62,7 @@
 *.bat      text eol=crlf
 *.cmd      text eol=crlf
 # can be lf as ps1 can be cross platform
-*.ps1      text eol=crlf
+*.ps1      text eol=lf
 #### c/c++
 ## src
 *.c      text diff=c   eol=lf

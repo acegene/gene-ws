@@ -1,18 +1,18 @@
 [submodule "aliases"]
-	path = repos/aliases
-	url = git@github.com:AceGene/aliases.git
+    path = repos/aliases
+    url = git@github.com:AceGene/aliases.git
 [submodule "lrns"]
-	path = repos/lrns
-	url = git@github.com:AceGene/lrns.git
+    path = repos/lrns
+    url = git@github.com:AceGene/lrns.git
 [submodule "lew"]
-	path = repos/lew
-	url = git@github.com:AceGene/lew.git
+    path = repos/lew
+    url = git@github.com:AceGene/lew.git
 [submodule "media"]
-	path = repos/media
-	url = git@github.com:AceGene/media.git
+    path = repos/media
+    url = git@github.com:AceGene/media.git
 [submodule "note"]
-	path = repos/note
-	url = git@github.com:AceGene/note.git
+    path = repos/note
+    url = git@github.com:AceGene/note.git
 [submodule "scripts"]
-	path = repos/scripts
-	url = git@github.com:AceGene/scripts.git
+    path = repos/scripts
+    url = git@github.com:AceGene/scripts.git

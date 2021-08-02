@@ -29,7 +29,7 @@ __parse_args(){
 ################&&!%@@%!&&################ AUTO GENERATED CODE BELOW THIS LINE ################&&!%@@%!&&################
 # yymmdd: 210228
 # generation cmd on the following line:
-# python "${GWSPY}/write-btw.py" "-t" "bash" "-w" "${GWS}/init/init.bash" "-x" "__echo" "__yes_no_prompt" "__check_if_objs_exist" "__append_line_to_file_if_not_found"
+# python "${GWSPY}/write_btw.py" "-t" "bash" "-w" "${GWS}/init/init.bash" "-x" "__echo" "__yes_no_prompt" "__check_if_objs_exist" "__append_line_to_file_if_not_found"
 
 __echo(){
     #### echo that can watch the silent and verbose variables from the scope it was called from
@@ -166,7 +166,7 @@ _init() {
     #### list scripts matching submodule/init/init.bash
     local init_scripts=($(for g in $(find "${dir_repo}" -mindepth 2 -name ".git"); do local init="$(dirname "${g}")/init/init.bash"; [ -f "${init}" ] && echo "${init}"; done))
     for init_script in "${init_scripts[@]}"; do echo "${init_script}"; done
-    #### execute scripts following user prompt 
+    #### execute scripts following user prompt
     __yes_no_prompt "PROMPT: execute the above scripts? (y/n)" "INFO: aborting ${0}..." && { for init_script in ${init_scripts[@]};
         do { echo "EXEC: ${init_script} ${args}"; "${init_script}" ${args} || echo "ERROR: ${init_script} ${args}"; } ; done; } || return 1
     #### add $line to $bash_aliases if needed to source #gene_ws_source
