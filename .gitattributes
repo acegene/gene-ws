@@ -61,6 +61,7 @@
 ## windows
 *.bat      text eol=crlf
 *.cmd      text eol=crlf
+*.ahk      text eol=lf
 # can be lf as ps1 can be cross platform
 *.ps1      text eol=lf
 #### c/c++
@@ -160,7 +161,7 @@
 ## mouse utech
 *.pfd    binary
 ## yugioh
-*.dat      text eol=lf
+*.dat      binary
 *.ydk      text eol=lf
 #### specific files
 .clang-format   text eol=lf

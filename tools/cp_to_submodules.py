@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
 import argparse
+import difflib
+import filecmp
 import inspect
 import os
 import shutil
 
 from typing import Any, Type, Sequence, Union
 
-from repos.scripts.py.utils import path_utils
+from utils import path_utils
 
 PATH_THIS = str(os.path.abspath(inspect.getsourcefile(lambda: 0)))
 DIR_THIS = str(os.path.dirname(PATH_THIS))
@@ -55,7 +57,23 @@ if __name__ == "__main__":
         for f in files:
             src = os.path.join(dir_module, f)
             dst = os.path.join(dir_sub, f)
-            if not force and os.path.exists(dst):
-                print("WARNING: %s: '%s' exists, skipping" % (BASE_THIS, dst))
-                continue
+            with open(src, "r", encoding="cp437") as src_file:
+                if os.path.exists(dst):
+                    if not filecmp.cmp(src, dst):
+                        with open(dst, "r", encoding="cp437") as dst_file:
+                            diff = difflib.unified_diff(
+                                dst_file.readlines(),
+                                src_file.readlines(),
+                                fromfile="original",
+                                tofile="edited",
+                            )
+                            print(f"Showing diff for '{src}' and '{dst}':")
+                            for line in diff:
+                                print(line)
+                            if not force:
+                                print(f"WARNING: {BASE_THIS}: '{src}' != '{dst}' but --force was not specified.")
+                                continue
+                    else:
+                        continue
+            print(f"cp '{src}' '{dst}'")
             shutil.copy2(src, dst)
