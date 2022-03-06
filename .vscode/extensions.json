@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        //// global
+        "EditorConfig.EditorConfig",
+        //// multilanguage
+        "hookyqr.beautify", // javascript, json, css, sass, html
+        "xaver.clang-format", // c, c++, java, javascript, objective-c, objective-c++, protobuf
+        /// powershell
+        "ms-vscode.powershell",
+        //// python
+        "matangover.mypy",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        //// shell
+        "foxundermoon.shell-format",
+        "timonwong.shellcheck"
+    ]
+}
