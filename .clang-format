@@ -1,18 +1,23 @@
-## for installation of clang see https://llvm.org/builds/
-##     windows: use exe based installer, select option 'add llvm to path for all users'
-##     usage in vscode:
-##         install the Clang-Format extension by author xaver
-##         add the following to your settings; ctrl+shift+p then type 'open settings (JSON)'
-##             "clang-format.style": "file",
-##             "editor.formatOnSave": true,
+#### Installation:
+####     see https://llvm.org/builds/
+####         windows: use exe based installer, select option 'add llvm to path for all users'
+####
+####     vscode installation:
+####         install the Clang-Format extension by author xaver
+####         add the following to your settings; ctrl+shift+p then type 'open settings (JSON)'
+####             "clang-format.style": "file",
+####             "editor.formatOnSave": true,
+#### Modifying this file:
+####     this file is compatible with clang-format version 12
+####         should be compatible with newest clang avalable on both windows/unix (windows is usually older)
+#### Comment key:
+####     those followed by '#x' are not supported by version 12
+####     those followed by '#*' are not necessary/important for my use cases
+####     those followed by '#?' are not understood fully
 
-## so many available stylings are defined this hardly matters, but a fallback shouldn't hurt...
+#### Fallback style for non specified settings
 BasedOnStyle: LLVM
-
-## custom styling statements
-##     those followed by '#x' are not supported by clang 12
-##     those followed by '#*' are not necessary for myself and instead left to defaults
-##     those followed by '#?' are not understood fully
+#### custom styling statements
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: false
