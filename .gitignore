@@ -1,7 +1,9 @@
-# Created by https://www.toptal.com/developers/gitignore/api/batch,bazel,c,c++,clion,diff,git,java,jupyternotebooks,linux,macos,matlab,nohup,powershell,python,vim,visualstudio,visualstudiocode,windows,zsh
-# Edit at https://www.toptal.com/developers/gitignore?templates=batch,bazel,c,c++,clion,diff,git,java,jupyternotebooks,linux,macos,matlab,nohup,powershell,python,vim,visualstudio,visualstudiocode,windows,zsh
+#### Created by https://www.toptal.com/developers/gitignore/api/batch,bazel,c,c++,clion,diff,git,java,jupyternotebooks,linux,macos,matlab,nohup,powershell,python,vim,visualstudio,visualstudiocode,windows,zsh
 .gitignore
 .gitattributes
+.jsbeautifyrc
+.mypy.ini
+.pylintrc
 pyproject.toml
 ### Batch ###
 # BatchFiles

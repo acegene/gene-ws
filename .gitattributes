@@ -1,178 +1,165 @@
 #### default behavior for non specified files
-# '* eol=lf' seems to cause binary files to get corrupted
-* text=auto
-#### common
-## documents
-*.bibtex      text eol=lf diff=bibtex
-*.doc          diff=astextplain
-*.DOC          diff=astextplain
-*.docx        diff=astextplain
-*.DOCX        diff=astextplain
-*.dot         diff=astextplain
-*.DOT         diff=astextplain
-*.rtf         diff=astextplain
-*.RTF         diff=astextplain
-*.pdf         diff=astextplain
-*.PDF         diff=astextplain
-*.adoc     text eol=lf
-*.conf     text eol=lf
-*.csv      text eol=lf
-*.ini      text eol=lf
-*.md       text eol=lf
-*.mustache text eol=lf
-*.sample   text eol=lf
-*.sql      text eol=lf
-*.tab      text eol=lf
-*.tex      text eol=lf diff=tex
-*.textile  text eol=lf
-*.tsv      text eol=lf
-*.txt      text eol=lf
-## graphics
-*.eps      binary
-*.ico      binary
-*.gif      binary
-*.jpg      binary
-*.jpeg     binary
-*.png      binary
-*.tif      binary
-*.tiff     binary
-# svg treated as an asset (binary) by default
-*.svg      text eol=lf
-## archives
-*.7z       binary
-*.gz       binary
-*.tar      binary
-*.tgz      binary
-*.zip      binary
-## serialization
-*.json     text eol=lf
-*.toml     text eol=lf
-*.xml      text eol=lf
-*.yaml     text eol=lf
-*.yml      text eol=lf
-#### scripts
-## linux/unix
-*.bash     text eol=lf
-*.fish     text eol=lf
-*.perl     text eol=lf
-*.sh       text eol=lf
-*.tcsh     text eol=lf
-*.zsh      text eol=lf
-## windows
-*.bat      text eol=crlf
-*.cmd      text eol=crlf
-*.ahk      text eol=lf
-# can be lf as ps1 can be cross platform
-*.ps1      text eol=lf
+## requires Git 2.10 # https://stackoverflow.com/q/29435156
+* text=auto eol=lf
+#### docs
+## basic docs
+*.[aA][dD][oO][cC] text eol=lf
+*.[cC][oO][nN][fF] text eol=lf
+*.[cC][sS][vV] text eol=lf
+*.[iI][nN][iI] text eol=lf
+*.[mM][dD] text eol=lf
+*.[mM][uU][sS][tT][aA][cC][hH][eE] text eol=lf
+*.[sS][aA][mM][pP][lL][eE] text eol=lf
+*.[sS][qQ][lL] text eol=lf
+*.[tT][aA][bB] text eol=lf
+*.[tT][eE][xX][tT][iI][lL][eE] text eol=lf
+*.[tT][sS][vV] text eol=lf
+*.[tT][xX][tT] text eol=lf
+## astextplain docs
+*.[dD][oO][cC] diff=astextplain
+*.[dD][oO][cC][xX] diff=astextplain
+*.[dD][oO][tT] diff=astextplain
+*.[pP][dD][fF] diff=astextplain
+*.[rR][tT][fF] diff=astextplain
+## misc docs
+*.[bB][iI][bB][tT][eE][xX] text eol=lf diff=bibtex
+*.[tT][eE][xX] text eol=lf diff=tex
+#### serialization
+*.[jJ][sS][oO][nN] text eol=lf
+*.[tT][oO][mM][lL] text eol=lf
+*.[xX][mM][lL] text eol=lf
+*.[yY][aA][mM][lL] text eol=lf
+*.[yY][mM][lL] text eol=lf
+#### unix scripts
+*.[bB][aA][sS][hH] text eol=lf
+*.[fF][iI][sS][hH] text eol=lf
+*.[pP][eE][rR][lL] text eol=lf
+*.[sS][hH] text eol=lf
+*.[tT][cC][sS][hH] text eol=lf
+*.[zZ][sS][hH] text eol=lf
 #### c/c++
-## src
-*.c      text diff=c   eol=lf
-*.cc     text diff=cpp eol=lf
-*.cxx    text diff=cpp eol=lf
-*.cpp    text diff=cpp eol=lf
-*.c++    text diff=cpp eol=lf
-*.hpp    text diff=cpp eol=lf
-*.h      text diff=c   eol=lf
-*.h++    text diff=cpp eol=lf
-*.hh     text diff=cpp eol=lf
-## compiled obj files
-*.slo    binary
-*.lo     binary
-*.o      binary
-*.obj    binary
-## precompiled headers
-*.gch    binary
-*.pch    binary
-## compiled dynamic libraries
-*.so     binary
-*.dylib  binary
-*.dll    binary
-## compiled static libraries
-*.lai    binary
-*.la     binary
-*.a      binary
-*.lib    binary
-## executables
-*.exe    binary
-*.out    binary
-*.app    binary
+*.[cC] text diff=c eol=lf
+*.[cC]++ text diff=cpp eol=lf
+*.[cC][cC] text diff=cpp eol=lf
+*.[cC][pP][pP] text diff=cpp eol=lf
+*.[cC][xX][xX] text diff=cpp eol=lf
+*.[hH] text diff=c eol=lf
+*.[hH]++ text diff=cpp eol=lf
+*.[hH][hH] text diff=cpp eol=lf
+*.[hH][pP][pP] text diff=cpp eol=lf
 #### java
-*.gradle        text eol=lf diff=java
-*.gradle.kts    text eol=lf diff=java
-*.java          text eol=lf diff=java
+*.[gG][rR][aA][dD][lL][eE] text eol=lf diff=java
+*.[gG][rR][aA][dD][lL][eE].[kK][tT][sS] text eol=lf diff=java
+*.[jJ][aA][vV][aA] text eol=lf diff=java
 #### html etc
-## src
-*.css           text eol=lf diff=css
-*.df            text eol=lf
-*.htm           text eol=lf diff=html
-*.html          text eol=lf diff=html
-*.js            text eol=lf
-*.jsp           text eol=lf
-*.jspf          text eol=lf
-*.jspx          text eol=lf
-*.properties    text eol=lf
-*.tld           text eol=lf
-*.tag           text eol=lf
-*.tagx          text eol=lf
-*.xml           text eol=lf
-## binary
-*.class         binary
-*.dll           binary
-*.ear           binary
-*.jar           binary
-*.so            binary
-*.war           binary
-#### matlab # CAUTION: *.m also matches mathematica packages
-## src
-*.m             text eol=lf diff=matlab
-*.mu            text eol=lf diff=matlab
-## binary
-*.p             binary
-*.mex*          binary
-*.fig           binary
-*.mat           binary
-*.mdl           binary
-*.slx           binary
-*.mdlp          binary
-*.slxp          binary
-*.sldd          binary
-*.mltbx         binary
-*.mlappinstall  binary
-*.mlpkginstall  binary
-*.mn            binary
+*.[cC][sS][sS] text eol=lf diff=css
+*.[dD][fF] text eol=lf
+*.[hH][tT][mM] text eol=lf diff=html
+*.[hH][tT][mM][lL] text eol=lf diff=html
+*.[jJ][sS] text eol=lf
+*.[jJ][sS][pP] text eol=lf
+*.[jJ][sS][pP][fF] text eol=lf
+*.[jJ][sS][pP][xX] text eol=lf
+*.[pP][rR][oO][pP][eE][rR][tT][iI][eE][sS] text eol=lf
+*.[tT][lL][dD] text eol=lf
+*.[tT][aA][gG] text eol=lf
+*.[tT][aA][gG][xX] text eol=lf
 #### python
-## src
-*.ipynb  text eol=lf
-*.pxd    text eol=lf diff=python
-*.py     text eol=lf diff=python
-*.py3    text eol=lf diff=python
-*.pyw    text eol=lf diff=python
-*.pyx    text eol=lf diff=python
-*.pyz    text eol=lf diff=python
-## binary
-*.db     binary
-*.p      binary
-*.pkl    binary
-*.pickle binary
-*.pyc    binary
-*.pyd    binary
-*.pyo    binary
-#### misc
+*.[iI][pP][yY][nN][bB] text eol=lf
+*.[pP][xX][dD] text eol=lf diff=python
+*.[pP][yY] text eol=lf diff=python
+*.[pP][yY]3 text eol=lf diff=python
+*.[pP][yY][wW] text eol=lf diff=python
+*.[pP][yY][xX] text eol=lf diff=python
+*.[pP][yY][zZ] text eol=lf diff=python
+#### special handling
+## windows specific # INFO: powershell is excluded on purpose
+*.[aA][hH][kK] text eol=crlf
+*.[bB][aA][tT] text eol=crlf
+*.[cC][mM][dD] text eol=crlf
+## git
+*.[dD][iI][fF][fF] -text
+*.[pP][aA][tT][cC][hH] -text
+## matlab # WARNING: *.m also matches mathematica packages
+*.[mM] text eol=lf diff=matlab
+*.[mM][uU] text eol=lf diff=matlab
+## powershell can be used on unix hence lf
+*.[pP][sS]1 text eol=lf
+## svg treated as an asset (binary) by default
+*.[sS][vV][gG] text eol=lf
+#### binary
+*.7[zZ] binary
+*.[aA] binary
+*.[aA][pP][pP] binary
+*.[cC][lL][aA][sS][sS] binary
+*.[dD][bB] binary
+*.[dD][lL][lL] binary
+*.[dD][yY][lL][iI][bB] binary
+*.[eE][aA][rR] binary
+*.[eE][pP][sS] binary
+*.[eE][xX][eE] binary
+*.[fF][iI][gG] binary
+*.[gG][cC][hH] binary
+*.[gG][iI][fF] binary
+*.[gG][zZ] binary
+*.[iI][cC][oO] binary
+*.[jJ][aA][rR] binary
+*.[jJ][pP][eE][gG] binary
+*.[jJ][pP][gG] binary
+*.[lL][aA] binary
+*.[lL][aA][iI] binary
+*.[lL][iI][bB] binary
+*.[lL][oO] binary
+*.[mM][aA][tT] binary
+*.[mM][dD][lL] binary
+*.[mM][dD][lL][pP] binary
+*.[mM][eE][xX]* binary
+*.[mM][lL][aA][pP][pP][iI][nN][sS][tT][aA][lL][lL] binary
+*.[mM][lL][pP][kK][gG][iI][nN][sS][tT][aA][lL][lL] binary
+*.[mM][lL][tT][bB][xX] binary
+*.[mM][nN] binary
+*.[oO] binary
+*.[oO][bB][jJ] binary
+*.[oO][uU][tT] binary
+*.[pP] binary
+*.[pP][cC][hH] binary
+*.[pP][iI][cC][kK][lL][eE] binary
+*.[pP][kK][lL] binary
+*.[pP][nN][gG] binary
+*.[pP][yY][cC] binary
+*.[pP][yY][dD] binary
+*.[pP][yY][oO] binary
+*.[sS][lL][dD][dD] binary
+*.[sS][lL][oO] binary
+*.[sS][lL][xX] binary
+*.[sS][lL][xX][pP] binary
+*.[sS][oO] binary
+*.[tT][aA][rR] binary
+*.[tT][gG][zZ] binary
+*.[tT][iI][fF] binary
+*.[tT][iI][fF][fF] binary
+*.[wW][aA][rR] binary
+*.[zZ][iI][pP] binary
+#### misc personal
 ## mouse utech
-*.pfd    binary
+*.[pP][fF][dD] binary
 ## yugioh
-*.dat      binary
-*.ydk      text eol=lf
-#### specific files
-.clang-format   text eol=lf
-.bashrc         text eol=lf
-.bash_aliases   text eol=lf
-.netrc          text eol=lf
-LICENSE         text eol=lf
-#### git specifics
-.gitattributes   text eol=lf export-ignore
-.github          text eol=lf export-ignore
-.gitignore       text eol=lf export-ignore
-.gitmodules      text eol=lf export-ignore
-*.diff           -text
-*.patch          -text
+*.[dD][aA][tT] binary
+*.[yY][dD][kK] text eol=lf
+#### fully specified filenames # INFO: these should occur below expressions using *
+## misc config/format/linting
+.[bB][aA][sS][hH]_[aA][lL][iI][aA][sS][eE][sS] text eol=lf
+.[bB][aA][sS][hH][rR][cC] text eol=lf
+.[cC][lL][aA][nN][gG]-[fF][oO][rR][mM][aA][tT] text eol=lf
+.[eE][dD][iI][tT][oO][rR][cC][oO][nN][fF][iI][gG] text eol=lf
+.[jJ][sS][bB][eE][aA][uU][tT][iI][fF][yY][rR][cC] text eol=lf
+.[mM][yY][pP][yY].[iI][nN][iI] text eol=lf
+.[nN][eE][tT][rR][cC] text eol=lf
+.[pP][yY][lL][iI][nN][tT][rR][cC] text eol=lf
+[lL][iI][cC][eE][nN][sS][eE] text eol=lf
+[lL][iI][cC][eE][nN][sS][eE].[mM][dD] text eol=lf
+## git specifics
+.[gG][iI][tT][aA][tT][tT][rR][iI][bB][uU][tT][eE][sS] text eol=lf export-ignore
+.[gG][iI][tT][hH][uU][bB] text eol=lf export-ignore
+.[gG][iI][tT][iI][gG][nN][oO][rR][eE] text eol=lf export-ignore
+.[gG][iI][tT][mM][oO][dD][uU][lL][eE][sS] text eol=lf export-ignore
