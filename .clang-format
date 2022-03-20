@@ -1,3 +1,5 @@
+#### https://clang.llvm.org/docs/ClangFormat.html
+####
 #### Installation:
 ####     see https://llvm.org/builds/
 ####         windows: use exe based installer, select option 'add llvm to path for all users'

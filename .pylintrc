@@ -1,3 +1,5 @@
+#### https://pylint.pycqa.org/en/latest/
+
 [MASTER]
 ignore=.git,
        CVS
