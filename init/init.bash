@@ -19,22 +19,18 @@ path_this="${dir_this}/${base_this}"
 # shellcheck disable=SC2034
 log_context="${base_this}" # implicitly used by __log func
 
-dir_repo="$(git -C "${dir_this}" rev-parse --show-toplevel | sed 's/^\(.\):/\/\1/')" || ! printf '%s\n' "ERROR: ${log_context}: could not locate git repo dir for ${base_this}" || return 1
+dir_repo="$(git -C "${dir_this}" rev-parse --show-toplevel | sed 's/^\([a-zA-Z]\):/\/\1/')" || ! printf '%s\n' "ERROR: ${log_context}: could not locate git repo dir for ${base_this}" || exit 1
 
-dir_sh_utils="${dir_repo}/repos/scripts/shell/sh-utils"
-. "${dir_sh_utils}/misc-utils.sh" || ! printf '%s\n' "ERROR: ${log_context}: could not source ${dir_sh_utils}/misc-utils.sh" || return 1
-. "${dir_sh_utils}/path-utils.sh" || ! printf '%s\n' "ERROR: ${log_context}: could not source ${dir_sh_utils}/path-utils.sh" || return 1
-. "${dir_sh_utils}/print-utils.sh" || ! printf '%s\n' "ERROR: ${log_context}: could not source ${dir_sh_utils}/print-utils.sh" || return 1
-. "${dir_sh_utils}/validation-utils.sh" || ! printf '%s\n' "ERROR: ${log_context}: could not source ${dir_sh_utils}/validation-utils.sh" || return 1
+for file in "${dir_repo}/repos/scripts/shell/sh/utils/"*.sh; do . "${file}" || exit "${?}"; done || exit "${?}"
 
 __generate_src() {
     local dir_repo="${1}"
     local path_src="${2}"
     local path_src_template="${dir_repo}/src/src.bash.template"
     #### create src file from template
-    __execute_w_err_q cp "${path_src_template}" "${path_src}" || return 1
+    __exec_only_err cp "${path_src_template}" "${path_src}" || return 1
     #### overwrite placeholde template parameters
-    __execute_w_err_q sed -i "s|TEMPLATE_DIR_REPO|${dir_repo}|g" "${path_src}" || return 1
+    __exec_only_err sed -i "s|TEMPLATE_DIR_REPO|${dir_repo}|g" "${path_src}" || return 1
 }
 
 __main() {
@@ -77,7 +73,7 @@ __main() {
     #### execute all inits if the user answers yes to the given prompt
     if __yes_no_prompt "PROMPT: would you like to execute all of the above scripts? (y/n) "; then
         for path_init in "${path_inits[@]}"; do
-            __execute_w_err "${path_init}" "${@}" || return 1
+            __exec_w_err "${path_init}" "${@}" || return 1
         done
     fi
 }
