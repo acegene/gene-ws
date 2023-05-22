@@ -1,9 +1,11 @@
 # gene-ws
 ## Description:
-This is a toplevel git repo which points to several submodule
-This repo's submodules located in repos/ should have the following
-* `init/` # scripts to align your pc's cfg to the repo
-* `src/` # files to be sourced by various shells
+This is a toplevel git repo which points to several submodules
+
+
+This repo's submodules with the following will have their corresponding scripts executed
+* `.init/` # scripts to align your pc's cfg to the repo
+* `.src/` # files to be sourced by various shells
 ## Glossary:
 * gitbash -> type of windows shell -> see: https://gitforwindows.org/
 * OS -> operating system
@@ -13,22 +15,22 @@ This repo's submodules located in repos/ should have the following
 ### Initialize Repo
 * via gitbash/terminal
 ```
-    dir_clone="${HOME}" # can replace with: dir_clone='path_to_put_repo_in'
-    git -C "${dir_clone}" clone git@github.com:AceGene/gene-ws.git
-    cd "${dir_clone}/gene-ws"
-    git submodule init
-    git submodule deinit "repos/lew" # errors are usually fine
-    git submodule update --recursive --progress
-    git submodule foreach --recursive 'git submodule update --recursive --init || :'
+dir_clone="${HOME}" # can replace with: dir_clone='path_to_put_repo_in'
+git -C "${dir_clone}" clone git@github.com:AceGene/gene-ws.git
+cd "${dir_clone}/gene-ws"
+git submodule init
+git submodule deinit "repos/lew" # errors are usually fine
+git submodule update --recursive --progress
+git submodule foreach --recursive 'git submodule update --recursive --init || :'
 ```
 ### Add Configs
-OS list -> ubuntu1804, ubuntu2004, win10, wsl-ubuntu1804, wsl-ubuntu2004
-  * linux/osx should be able to use ubuntu2004, however testing is pending
-  * if OS is ubuntu* -> via terminal: `init/init.bash --os <NAME_OS>`
-  * if OS is win10 -> via gitbash: `init/init.bash --os <NAME_OS>`
-  * if OS is wsl-ubuntu* -> via terminal: `init/init.bash --os <NAME_OS>`
-  * if OS is some flavor of linux/unix -> via terminal: `init/init.bash --os ubuntu2004` # pending testing
-  * for powershell -> `cd gene-ws; if($?){init/init.ps1}`
+* `cd <GENE_WS_PATH>`
+* depenmding on OS, execute the following:
+  * mint -> via terminal: `.init/init.bash --os <NAME_OS>`
+  * ubuntu -> via terminal: `.init/init.bash --os <NAME_OS>`
+  * win -> via gitbash: `.init/init.bash --os <NAME_OS>`; via powershell `.init/init.ps1`
+  * wsl-ubuntu -> via terminal: `.init/init.bash --os <NAME_OS>`
+  * other flavors of linux/unix -> via terminal: `.init/init.bash --os ubuntu` # untested
 ## editors:
 * vscode -> see [.vscode](.vscode)
 ## formatters:

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# owner: acegene
+# This file executes the .init/init.bash of all child repositories
 #
-# descr: this file executes the init/init.bash of all child repositories
-#
-# todos: * add option for --partial for specifying submodules to act on
-#        * initialize submodules
+# todos
+#   * add option for --partial for specifying submodules to act on
+#   * initialize submodules
+#   * extend init.bash search logic for all dirs rather than only within repos/
 
 # shellcheck disable=SC1091
 
@@ -26,11 +26,11 @@ for file in "${dir_repo}/repos/scripts/shell/sh/utils/"*.sh; do . "${file}" || e
 __generate_src() {
     local dir_repo="${1}"
     local path_src="${2}"
-    local path_src_template="${dir_repo}/src/src.bash.template"
+    local path_src_template="${dir_repo}/.src/src.bash.template"
     #### create src file from template
     __exec_only_err cp "${path_src_template}" "${path_src}" || return 1
     #### overwrite placeholde template parameters
-    __exec_only_err sed -i "s|TEMPLATE_DIR_REPO|${dir_repo}|g" "${path_src}" || return 1
+    __exec_only_err sed -i "s|<TEMPLATE_DIR_REPO>|${dir_repo}|g" "${path_src}" || return 1
 }
 
 __main() {
@@ -38,25 +38,31 @@ __main() {
     ## dirs
     local dir_submodules="${dir_repo}/repos"
     ## files
-    local bash_aliases="${HOME}/.bash_aliases"
     local bashrc="${HOME}/.bashrc"
-    local path_src="${dir_repo}/src/src.bash"
-    local path_init_relative_submodule='init/init.bash'
+    local bash_aliases="${HOME}/.bash_aliases"
+    local path_src="${dir_repo}/.src/src.bash"
+    local path_init_relative_submodule='.init/init.bash'
     #### generate src file based on parameters
-    local path_src="${dir_repo}/src/src.bash"
-    __generate_src "${dir_repo}" "${dir_repo}/src/src.bash" || ! __log -e "could not generate src" || return 1
-    #### create $bash_aliases and $bashrc if they do not exist
-    __is_file "${bash_aliases}" || touch "${bash_aliases}" || ! __log -e "could not create '${bash_aliases}'" || return 1
-    __is_file "${bashrc}" || __print_out_nl ". '${bash_aliases}'" >>"${bashrc}" || ! __log -e "could not write to '${bashrc}'" || return 1
+    __generate_src "${dir_repo}" "${dir_repo}/.src/src.bash" || ! __log -e "could not generate src" || return 1
     #### lines to add to files
+    local lines_bashrc=("[ -f '${bash_aliases}' ] && . '${bash_aliases}'")
     local lines_bash_aliases=("[ -f '${path_src}' ] && . '${path_src}'")
-    #### add ${lines_bash_aliases[@]} to $bash_aliases if not already within $bash_aliases
+    #### create $bash_aliases and $bashrc if they do not exist
+    __is_file "${bashrc}" || touch "${bashrc}" || ! __log -e "could not create '${bashrc}'" || return 1
+    __is_file "${bash_aliases}" || touch "${bash_aliases}" || ! __log -e "could not create '${bash_aliases}'" || return 1
+    #### add ${lines_bashrc[@]} to $bashrc if not already within $bashrc
     __file_append_trailing_nl_if_none "${bash_aliases}" || return 1
+    local line_bashrc=''
+    for line_bashrc in "${lines_bashrc[@]}"; do
+        __file_append_line_if_not_found "${bashrc}" "${line_bashrc}" || return 1
+    done
+    #### add ${lines_bash_aliases[@]} to $bash_aliases if not already within $bash_aliases
+    __file_append_trailing_nl_if_none "${bashrc}" || return 1
     local line_bash_aliases=''
     for line_bash_aliases in "${lines_bash_aliases[@]}"; do
         __file_append_line_if_not_found "${bash_aliases}" "${line_bash_aliases}" || return 1
     done
-    #### collect all existing submodule/init/init.bash
+    #### collect all existing submodule/.init/init.bash
     local path_inits=()
     local path_init=''
     local dir_submodule=''
@@ -65,7 +71,7 @@ __main() {
         [ -f "${path_init}" ] || ! __log -w "could not locate ${path_init}; skipping" || continue
         path_inits+=("${path_init}")
     done < <(find "${dir_submodules}" ! -name "$(basename -- "${dir_submodules}")" -prune -type d -print0)
-    #### list each submodule/init/init.bash
+    #### list each submodule/.init/init.bash
     __log -i 'listing available scripts to execute:'
     for path_init in "${path_inits[@]}"; do
         __print_err_nl "    ${path_init}"
