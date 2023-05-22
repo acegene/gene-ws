@@ -17,6 +17,7 @@
     //// global extension specific settings
     "clang-format.style": "file",
     //// language specific settings
+    "[ahk2]": { "editor.defaultFormatter": "thqby.vscode-autohotkey2-lsp" },
     "[bat]": { "files.eol": "\r\n" },
     "[bats]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
     "[c]": { "editor.defaultFormatter": "xaver.clang-format" },
@@ -60,5 +61,6 @@
     "python.linting.pylintArgs": ["--rcfile=${workspaceFolder}/.pylintrc"],
     "python.linting.pylintEnabled": true,
     "[sass]": { "editor.defaultFormatter": "HookyQR.beautify" },
-    "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" }
+    "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+    "[starlark]": { "editor.formatOnSave": true }
 }

@@ -1,17 +1,21 @@
 {
     "recommendations": [
-        //// global
+        // global
         "EditorConfig.EditorConfig",
-        //// multilanguage
-        "hookyqr.beautify", // javascript, json, css, sass, html
+        // ahk2
+        "thqby.vscode-autohotkey2-lsp",
+        // bazel
+        "BazelBuild.vscode-bazel",
+        // multilanguage
+        "hookyqr.beautify", // javascript, json, css, sass, html TODO: deprecated
         "xaver.clang-format", // c, c++, java, javascript, objective-c, objective-c++, protobuf
-        /// powershell
+        // powershell
         "ms-vscode.powershell",
-        //// python
+        // python
         "matangover.mypy",
         "ms-python.vscode-pylance",
         "ms-python.python",
-        //// shell
+        // shell
         "foxundermoon.shell-format",
         "timonwong.shellcheck"
     ]
