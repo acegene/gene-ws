@@ -1,5 +1,5 @@
 {
-    "brace_style": "collapse",
+    "brace_style": "collapse,preserve-inline",
     "comma_first": false,
     "eol": "\n",
     "end_with_newline": true,

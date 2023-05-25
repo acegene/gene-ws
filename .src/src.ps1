@@ -1,41 +1,53 @@
 # This file is sourced by powershell profile's after this repo's init.ps1 is executed
 
-$ErrorActionPreference = 'Stop'
+function __Set-Vars-GWS {
+    function __Set-Var {
+        param (
+            [string]$var_name,
+            [string]$value,
+            [Int16]$target_scope = 0,
+            [string[]]$scopes = @('Process')
+        )
+        foreach ($scope in $scopes) {
+            [Environment]::SetEnvironmentVariable($var_name, $value, $scope)
+        }
+        New-Variable -Name $var_name -Value $value -Scope ($target_scope + 1)
+    }
 
-function _src {
-    #### hardcoded values
-    $dir_this = $PSScriptRoot # not compatible with PS version < 3.0
-    $dir_repo = "$(Push-Location $(git -C $($dir_this) rev-parse --show-toplevel); Write-Output $PWD; Pop-Location)"
-    $FormatEnumerationLimit = -1
-    #### exports
-    ## export vars
-    $global:GWS = $dir_repo
-    $global:GWSA = "$($GWS)\repos\aliases"
-    $global:GWSLEW = "$($GWS)\repos\lew"
-    $global:GWSLEWST = "$($GWSLEW)\storage"
-    $global:GWSL = "$($GWS)\repos\lrns"
-    $global:GWSM = "$($GWS)\repos\media"
-    $global:GWSS = "$($GWS)\repos\scripts"
-    $global:GWSAHK = "$($GWSS)\win\ahk"
-    $global:GWSPS = "$($GWSS)\win\ps1"
-    $global:GWSPY = "$($GWSS)\py"
-    $global:GWSSH = "$($GWSS)\shell"
-    ## export paths
-    $env:PATH += ";$($GWSA)\bin"
-    $env:PATH += ";$($LEW)\bin"
-    $env:PYTHONPATH = "$($env:PATH):${GWSPY}"
-    #### aliases
-    function global:gws () {Set-Location $global:GWS; gg}
-    function global:gwsa() {Set-Location $global:GWSA; gg}
-    function global:gwslew() {Set-Location $global:GWSLEW; gg}
-    function global:gwslewst() {Set-Location $global:GWSLEWST; gg}
-    function global:gwsl() {Set-Location $global:GWSL; gg}
-    function global:gwsm() {Set-Location $global:GWSM; gg}
-    function global:gwss() {Set-Location $global:GWSS; gg}
-    function global:gwsahk() {Set-Location $global:GWSAHK; gg}
-    function global:gwsps() {Set-Location $global:GWSPS; gg}
-    function global:gwspy() {Set-Location $global:GWSPY; gg}
-    function global:gwssh() {Set-Location $global:GWSSH; gg}
+    $private:dir_this = $PSScriptRoot # not compatible with PS version < 3.0
+    $private:dir_repo = "$(Push-Location $(git -C $($dir_this) rev-parse --show-toplevel); Write-Output $PWD; Pop-Location)"
+    __Set-Var 'GWS' $dir_repo 1
+    __Set-Var 'GWSA' "$($GWS)\repos\aliases" 1
+    __Set-Var 'GWSLEW' "$($GWS)\repos\lew" 1
+    __Set-Var 'GWSLEWST' "$($GWSLEW)\storage" 1
+    __Set-Var 'GWSL' "$($GWS)\repos\lrns" 1
+    __Set-Var 'GWSM' "$($GWS)\repos\media" 1
+    __Set-Var 'GWSS' "$($GWS)\repos\scripts" 1
+    __Set-Var 'GWSWIN' "$($GWSS)\win" 1
+    __Set-Var 'GWSAHK' "$($GWSWIN)\ahk" 1
+    __Set-Var 'GWSPS' "$($GWSWIN)\ps1" 1
+    __Set-Var 'GWSPY' "$($GWSS)\py" 1
+    __Set-Var 'GWSSH' "$($GWSS)\shell" 1
 }
 
-_src @args
+$FormatEnumerationLimit = -1
+
+__Set-Vars-GWS
+
+$env:PATH += ";$($GWSA)\bin"
+$env:PATH += ";$($LEW)\bin"
+$env:PATH += ";$($GWSPS)\bin"
+$env:PYTHONPATH = "$($env:PATH):${GWSPY}"
+
+function gws () {Set-Location $GWS; gg}
+function gwsa() {Set-Location $GWSA; gg}
+function gwslew() {Set-Location $GWSLEW; gg}
+function gwslewst() {Set-Location $GWSLEWST; gg}
+function gwsl() {Set-Location $GWSL; gg}
+function gwsm() {Set-Location $GWSM; gg}
+function gwss() {Set-Location $GWSS; gg}
+function gwswin() {Set-Location $GWSWIN; gg}
+function gwsahk() {Set-Location $GWSAHK; gg}
+function gwsps() {Set-Location $GWSPS; gg}
+function gwspy() {Set-Location $GWSPY; gg}
+function gwssh() {Set-Location $GWSSH; gg}

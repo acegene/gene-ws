@@ -1,19 +1,22 @@
 {
     //// global settings
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": null,
     "editor.detectIndentation": false,
+    "editor.foldingStrategy": "indentation",
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
-    "files.encoding": "utf8",
-    "files.eol": "\n",
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
     "files.associations": {
         "*clang-format": "yaml",
         "*jsbeautifyrc": "json",
         "*pylintrc": "toml",
         "*shellcheckrc": "plaintext"
     },
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     //// global extension specific settings
     "clang-format.style": "file",
     //// language specific settings
@@ -62,5 +65,5 @@
     "python.linting.pylintEnabled": true,
     "[sass]": { "editor.defaultFormatter": "HookyQR.beautify" },
     "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-    "[starlark]": { "editor.formatOnSave": true }
+    "[starlark]": {}
 }
