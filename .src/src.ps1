@@ -28,14 +28,21 @@ function __Set-Vars-GWS {
     __Set-Var 'GWSPS' "$($GWSWIN)\ps1" 1
     __Set-Var 'GWSPY' "$($GWSS)\py" 1
     __Set-Var 'GWSSH' "$($GWSS)\shell" 1
+
+    $private:REPOS_MAYBE = (Get-Item $GWS).parent
+    if ((Split-Path($REPOS_MAYBE) -Leaf) -eq 'repos') {
+        __Set-Var 'REPOS' $REPOS_MAYBE 1
+    }
 }
 
 $FormatEnumerationLimit = -1
 
 __Set-Vars-GWS
 
+$env:PATH += ";$($HOME)\bin"
 $env:PATH += ";$($GWSA)\bin"
-$env:PATH += ";$($LEW)\bin"
+$env:PATH += ";$($GWSLEW)\bin"
+$env:PATH += ";$($GWSSH)\bin"
 $env:PATH += ";$($GWSPS)\bin"
 $env:PYTHONPATH = "$($env:PATH):${GWSPY}"
 
@@ -51,3 +58,5 @@ function gwsahk() {Set-Location $GWSAHK; gg}
 function gwsps() {Set-Location $GWSPS; gg}
 function gwspy() {Set-Location $GWSPY; gg}
 function gwssh() {Set-Location $GWSSH; gg}
+
+function repos() {Set-Location $REPOS}

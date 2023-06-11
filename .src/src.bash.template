@@ -16,8 +16,10 @@ export GWSPS="${GWSWIN}/ps1"
 export GWSPY="${GWSS}/py"
 export GWSSH="${GWSS}/shell"
 
+export PATH="${PATH}:${HOME}/bin"
 export PATH="${PATH}:${GWSA}/bin"
-export PATH="${PATH}:${LEW}/bin"
+export PATH="${PATH}:${GWSLEW}/bin"
+export PATH="${PATH}:${GWSSH}/bin"
 
 export PYTHONPATH="${PATH}:${GWSPY}"
 
@@ -34,3 +36,8 @@ alias gwsahk='cd "${GWSAHK}" && gg'
 alias gwsps='cd "${GWSPS}" && gg'
 alias gwspy='cd "${GWSPY}" && gg'
 alias gwssh='cd "${GWSSH}" && gg'
+
+if [ "$(basename -- "$(dirname -- "${GWS}")")" = 'repos' ]; then
+    export REPOS="$(dirname -- "${GWS}")"
+    alias repos='cd "${REPOS}"'
+fi
