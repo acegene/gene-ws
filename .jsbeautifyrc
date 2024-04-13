@@ -1,6 +1,7 @@
 {
     "brace_style": "collapse,preserve-inline",
     "comma_first": false,
+    "keep_array_indentation": false,
     "eol": "\n",
     "end_with_newline": true,
     "indent_char": " ",

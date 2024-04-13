@@ -1,0 +1,1 @@
+* Determine why empty shell scripts are appending a newline

@@ -16,9 +16,10 @@ export GWSPS="${GWSWIN}/ps1"
 export GWSPY="${GWSS}/py"
 export GWSSH="${GWSS}/shell"
 
-export PATH="${PATH}:${HOME}/bin"
+export PATH="${PATH}:${HOME}/.local\bin"
 export PATH="${PATH}:${GWSA}/bin"
 export PATH="${PATH}:${GWSLEW}/bin"
+export PATH="${PATH}:${GWSPY}/bin"
 export PATH="${PATH}:${GWSSH}/bin"
 
 export PYTHONPATH="${PATH}:${GWSPY}"

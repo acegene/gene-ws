@@ -1,0 +1,15 @@
+## values set by .editorconfig
+# endOfLine
+# printWidth
+# tabWidth
+# useTabs
+
+arrowParens: "always"
+bracketSameLine: false
+bracketSpacing: false
+experimentalTernaries: true
+jsxSingleQuote: false
+quoteProps: "as-needed"
+semi: false
+singleQuote: true
+trailingComma: "es5"

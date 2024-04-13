@@ -39,11 +39,12 @@ $FormatEnumerationLimit = -1
 
 __Set-Vars-GWS
 
-$env:PATH += ";$($HOME)\bin"
+$env:PATH += ";$($HOME)\.local\bin"
 $env:PATH += ";$($GWSA)\bin"
 $env:PATH += ";$($GWSLEW)\bin"
-$env:PATH += ";$($GWSSH)\bin"
 $env:PATH += ";$($GWSPS)\bin"
+$env:PATH += ";$($GWSPY)\bin"
+$env:PATH += ";$($GWSSH)\bin"
 $env:PYTHONPATH = "$($env:PATH):${GWSPY}"
 
 function gws () {Set-Location $GWS; gg}
