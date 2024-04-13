@@ -7,33 +7,43 @@ This repo's submodules with the following will have their corresponding scripts 
 * `.init/` # scripts to align your pc's cfg to the repo
 * `.src/` # files to be sourced by various shells
 ## Glossary:
+* bash -> linux/unix shell
 * gitbash -> type of windows shell -> see: https://gitforwindows.org/
 * OS -> operating system
 * powershell -> type of windows shell
-* terminal -> linux/unix bash shell
 ## Usage:
-### Initialize Repo
-* via gitbash/terminal
+### Initialize Repo (bash/gitbash)
+* via bash/gitbash
+
+Clone repo
 ```
-dir_clone="${HOME}" # can replace with: dir_clone='path_to_put_repo_in'
-git -C "${dir_clone}" clone git@github.com:AceGene/gene-ws.git
-cd "${dir_clone}/gene-ws"
-git submodule init
-git submodule deinit "repos/lew" # errors are usually fine
-git submodule update --recursive --progress
-git submodule foreach --recursive 'git submodule update --recursive --init || :'
+dir_for_repo="${HOME}/repos" && # can be any directory of your choice
+mkdir -p "${dir_for_repo}" &&
+cd "${dir_for_repo}" &&
+git clone git@github.com:AceGene/gene-ws.git &&
+echo "SUCCESS" || echo "FAILURE"
+```
+Clone submodules
+```
+cd "${dir_for_repo}/gene-ws" &&
+git submodule init &&
+git submodule deinit "repos/lew" &&
+git -c submodule."repos/lew".update=none submodule update --recursive &&
+git submodule foreach --recursive 'git submodule update --recursive --init || :' &&
+git submodule foreach '{ git checkout master && git pull; } || { git checkout main && git pull; } || :' &&
+echo "SUCCESS" || echo "FAILURE"
 ```
 ### Add Configs
 * `cd <GENE_WS_PATH>`
 * depenmding on OS, execute the following:
-  * mint -> via terminal: `.init/init.bash --os <NAME_OS>`
-  * ubuntu -> via terminal: `.init/init.bash --os <NAME_OS>`
+  * mint -> via bash: `.init/init.bash --os <NAME_OS>`
+  * ubuntu -> via bash: `.init/init.bash --os <NAME_OS>`
   * win -> via gitbash: `.init/init.bash --os <NAME_OS>`; via powershell `.init/init.ps1`
-  * wsl-ubuntu -> via terminal: `.init/init.bash --os <NAME_OS>`
-  * other flavors of linux/unix -> via terminal: `.init/init.bash --os ubuntu` # untested
-## editors:
+  * wsl-ubuntu -> via bash: `.init/init.bash --os <NAME_OS>`
+  * other flavors of linux/unix -> via bash: `.init/init.bash --os ubuntu` # untested
+## Editors:
 * vscode -> see [.vscode](.vscode)
-## formatters:
+## Formatters:
 * c/cpp/csharp/java/objective-c/objective-cpp
   * clang-format -> see: https://clang.llvm.org/docs/ClangFormat.html
     * config file=`.clang-format`
@@ -54,7 +64,7 @@ git submodule foreach --recursive 'git submodule update --recursive --init || :'
     * shfmt -> see: https://github.com/mvdan/sh
       * config file=`.editorconfig`
       * installation -> via [go](https://go.dev/doc/install): `go install mvdan.cc/sh/v3/cmd/shfmt@latest`
-## linters:
+## Linters:
 * python
   * mypy -> see: https://mypy.readthedocs.io/en/stable/getting_started.html
     * config file=`.mypy.ini`
