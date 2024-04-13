@@ -1,1 +1,4 @@
 * Determine why empty shell scripts are appending a newline
+* investigate enable of symlinks
+git config --global user.name
+git config --global core.symlinks
