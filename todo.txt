@@ -1,4 +1,11 @@
 * Determine why empty shell scripts are appending a newline
 * investigate enable of symlinks
+
 git config --global user.name
 git config --global core.symlinks
+
+https://github.com/microsoft/vscode-python/wiki/Migration-to-Python-Tools-Extensions
+
+rewrite init.bash and init.ps1 logic to use python and simplify os prompting
+
+https://github.com/Microsoft/vscode/issues/44755#issuecomment-984943769

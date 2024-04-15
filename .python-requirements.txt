@@ -1,0 +1,6 @@
+# python3 -m pip install -r python-requirements.txt
+filelock
+GitPython
+parameterized
+pyfakefs
+pypdf

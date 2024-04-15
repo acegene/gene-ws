@@ -23,6 +23,7 @@ cd "${dir_for_repo}" &&
 git clone git@github.com:AceGene/gene-ws.git &&
 echo "SUCCESS" || echo "FAILURE"
 ```
+
 Clone submodules
 ```
 cd "${dir_for_repo}/gene-ws" &&
@@ -32,6 +33,18 @@ git -c submodule."repos/lew".update=none submodule update --recursive &&
 git submodule foreach --recursive 'git submodule update --recursive --init || :' &&
 git submodule foreach '{ git checkout master && git pull; } || { git checkout main && git pull; } || :' &&
 echo "SUCCESS" || echo "FAILURE"
+```
+
+Init shell configurations
+```
+cd "${dir_for_repo}/gene-ws" &&
+.init/init.bash --os mint
+## open new shell to continue
+```
+
+Setup linter and formatter files
+```
+python3 "$GWSPY/actions.py" --json "$GWSPY/actions-jsons/cp_cfgs.json"
 ```
 ### Add Configs
 * `cd <GENE_WS_PATH>`
@@ -58,7 +71,7 @@ echo "SUCCESS" || echo "FAILURE"
 * python
   * black -> see: https://github.com/psf/black
     * config file=`pyproject.toml`
-    * installation -> via pip: `pip install black`
+    * installation -> via pip: `python 3 -m pip install black`
 * shell
   * bash/mksh/sh
     * shfmt -> see: https://github.com/mvdan/sh

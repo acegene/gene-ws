@@ -17,6 +17,8 @@
         "ms-vscode.powershell",
         // python
         "matangover.mypy",
+        "ms-python.black-formatter",
+        "ms-python.pylint",
         "ms-python.vscode-pylance",
         "ms-python.python",
         // shell

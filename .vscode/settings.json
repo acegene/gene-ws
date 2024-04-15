@@ -39,7 +39,9 @@
     "[markdown]": { "files.trimTrailingWhitespace": false },
     "[objective-c]": { "editor.defaultFormatter": "xaver.clang-format" },
     "[objective-cpp]": { "editor.defaultFormatter": "xaver.clang-format" },
-    "[powershell]": { "editor.defaultFormatter": "ms-vscode.powershell" },
+    "[powershell]": {
+        "editor.defaultFormatter": "ms-vscode.powershell"
+    },
     "powershell.codeFormatting.addWhitespaceAroundPipe": true,
     "powershell.codeFormatting.alignPropertyValuePairs": true,
     "powershell.codeFormatting.autoCorrectAliases": true,
@@ -52,17 +54,11 @@
     "powershell.codeFormatting.whitespaceBetweenParameters": true,
     "powershell.codeFormatting.whitespaceInsideBrace": false,
     "[properties]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-    "[python]": {},
-    "python.formatting.provider": "black",
+    "[python]": { "editor.defaultFormatter": "ms-python.black-formatter" },
     "python.languageServer": "Pylance",
-    "python.linting.enabled": true,
-    // python -m pip install mypy
+    // python3 -m pip install mypy
     "mypy.enabled": true,
-    "python.linting.mypyEnabled": false,
-    // "python.linting.mypyArgs": ["--config-file=${workspaceFolder}/.mypy.ini"],
-    // python -m pip install pylint
-    "python.linting.pylintArgs": ["--rcfile=${workspaceFolder}/.pylintrc"],
-    "python.linting.pylintEnabled": true,
+    // python3 -m pip install pylint
     "[sass]": { "editor.defaultFormatter": "HookyQR.beautify" },
     "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
     "[starlark]": {}

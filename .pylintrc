@@ -12,7 +12,7 @@ unsafe-load-any-extension=no
 
 [MESSAGES CONTROL]
 disable=
-        ## should be removed for testing modules
+        ## should be enabled for testing modules
         fixme,
         missing-class-docstring,
         missing-function-docstring,
@@ -25,7 +25,9 @@ disable=
         raw-checker-failed,
         suppressed-message,
         use-symbolic-message-instead,
-        useless-suppression
+        useless-suppression,
+        ## user specified
+        unnecessary-lambda-assignment,
 enable=c-extension-no-member
 
 [REPORTS]
@@ -156,5 +158,5 @@ analyse-fallback-blocks=no
 known-third-party=enchant
 
 [EXCEPTIONS]
-overgeneral-exceptions=BaseException,
-                       Exception
+overgeneral-exceptions=builtins.BaseException,
+                       builtins.Exception
