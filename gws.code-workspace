@@ -1,0 +1,75 @@
+{
+    "folders": [{
+            "path": "."
+        },
+        {
+            "path": "../../Desktop"
+        },
+        {
+            "path": "../../Documents"
+        }
+    ],
+    "settings": {
+        //// global settings
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultFormatter": null,
+        "editor.detectIndentation": false,
+        "editor.foldingStrategy": "indentation",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "files.associations": {
+            "*clang-format": "yaml",
+            "*jsbeautifyrc": "json",
+            "*pylintrc": "toml",
+            "*shellcheckrc": "plaintext"
+        },
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        //// global extension specific settings
+        "clang-format.style": "file",
+        //// language specific settings
+        "[ahk2]": { "editor.defaultFormatter": "thqby.vscode-autohotkey2-lsp" },
+        "[bat]": { "files.eol": "\r\n" },
+        "[bats]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[c]": { "editor.defaultFormatter": "xaver.clang-format" },
+        "[cpp]": { "editor.defaultFormatter": "xaver.clang-format" },
+        "[csharp]": { "editor.defaultFormatter": "xaver.clang-format" },
+        "[css]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[dockerfile]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[html]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[hosts]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[ignore]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[java]": { "editor.defaultFormatter": "xaver.clang-format" },
+        "[javascript]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[json]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[jsonc]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[jvmoptions]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[markdown]": { "files.trimTrailingWhitespace": false },
+        "[objective-c]": { "editor.defaultFormatter": "xaver.clang-format" },
+        "[objective-cpp]": { "editor.defaultFormatter": "xaver.clang-format" },
+        "[powershell]": { "editor.defaultFormatter": "ms-vscode.powershell" },
+        "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+        "powershell.codeFormatting.alignPropertyValuePairs": true,
+        "powershell.codeFormatting.autoCorrectAliases": true,
+        "powershell.codeFormatting.ignoreOneLineBlock": true,
+        "powershell.codeFormatting.openBraceOnSameLine": true,
+        "powershell.codeFormatting.preset": "OTBS",
+        "powershell.codeFormatting.useConstantStrings": true,
+        "powershell.codeFormatting.useCorrectCasing": true,
+        "powershell.codeFormatting.whitespaceAroundOperator": true,
+        "powershell.codeFormatting.whitespaceBetweenParameters": true,
+        "powershell.codeFormatting.whitespaceInsideBrace": false,
+        "[properties]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[python]": { "editor.defaultFormatter": "ms-python.black-formatter" },
+        "python.languageServer": "Pylance",
+        // python3 -m pip install mypy
+        "mypy.enabled": true,
+        // python3 -m pip install pylint
+        "[sass]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+        "[starlark]": {}
+    }
+}
