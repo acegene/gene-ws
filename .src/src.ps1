@@ -16,10 +16,11 @@ function __Set-Vars-GWS {
 
     $private:dir_this = $PSScriptRoot # not compatible with PS version < 3.0
     $private:dir_repo = "$(Push-Location $(git -C $($dir_this) rev-parse --show-toplevel); Write-Output $PWD; Pop-Location)"
+    __Set-Var 'DOCCRY' "$($HOME)\Documents\synced\crypt" 1
+    __Set-Var 'DOCUNC' "$($HOME)\Documents\synced\uncrypt" 1
     __Set-Var 'GWS' $dir_repo 1
     __Set-Var 'GWSA' "$($GWS)\repos\aliases" 1
     __Set-Var 'GWSLEW' "$($GWS)\repos\lew" 1
-    __Set-Var 'GWSLEWST' "$($GWSLEW)\storage" 1
     __Set-Var 'GWSL' "$($GWS)\repos\lrns" 1
     __Set-Var 'GWSM' "$($GWS)\repos\media" 1
     __Set-Var 'GWSS' "$($GWS)\repos\scripts" 1
@@ -45,12 +46,16 @@ $env:PATH += ";$($GWSLEW)\bin"
 $env:PATH += ";$($GWSPS)\bin"
 $env:PATH += ";$($GWSPY)\bin"
 $env:PATH += ";$($GWSSH)\bin"
-$env:PYTHONPATH = "$($env:PATH):${GWSPY}"
+$env:PYTHONPATH = "$($env:PATH):${GWSLEW}:${GWSPY}"
 
+function doccry () {Set-Location $DOCCRY}
+function docunc () {Set-Location $DOCUNC}
+function cry () {Set-Location $DOCCRY}
+function unc () {Set-Location $DOCUNC}
+function gws () {Set-Location $GWS; gg}
 function gws () {Set-Location $GWS; gg}
 function gwsa() {Set-Location $GWSA; gg}
 function gwslew() {Set-Location $GWSLEW; gg}
-function gwslewst() {Set-Location $GWSLEWST; gg}
 function gwsl() {Set-Location $GWSL; gg}
 function gwsm() {Set-Location $GWSM; gg}
 function gwss() {Set-Location $GWSS; gg}

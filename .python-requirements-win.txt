@@ -1,0 +1,3 @@
+## Windows specific python requirements in addition to .python-requirements.txt
+## python3 -m pip install -r .python-requirements-win.txt
+pywin32

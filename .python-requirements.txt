@@ -1,6 +1,11 @@
-# python3 -m pip install -r python-requirements.txt
+## python3 -m pip install -r .python-requirements.txt
+bindglobal
 filelock
 GitPython
 parameterized
 pyfakefs
 pypdf
+retrie
+# tkinter # sudo apt install python3-tk -y
+types-psutil
+types-pywin32

@@ -27,6 +27,7 @@ disable=
         use-symbolic-message-instead,
         useless-suppression,
         ## user specified
+        line-too-long,
         unnecessary-lambda-assignment,
 enable=c-extension-no-member
 
@@ -141,7 +142,7 @@ valid-classmethod-first-arg=cls
 valid-metaclass-classmethod-first-arg=cls
 
 [DESIGN]
-max-args=5
+max-args=8
 max-attributes=7
 max-bool-expr=5
 max-branches=12
