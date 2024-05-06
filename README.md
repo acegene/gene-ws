@@ -20,7 +20,7 @@ Clone repo
 dir_for_repo="${HOME}/repos" && # can be any directory of your choice
 mkdir -p "${dir_for_repo}" &&
 cd "${dir_for_repo}" &&
-git clone git@github.com:AceGene/gene-ws.git &&
+git clone git@github.com:acegene/gene-ws.git &&
 echo "SUCCESS" || echo "FAILURE"
 ```
 

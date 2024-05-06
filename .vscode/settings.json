@@ -15,8 +15,14 @@
     },
     "files.encoding": "utf8",
     "files.eol": "\n",
+    "files.exclude": {
+        "**/bk*": true
+    },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
+    "search.exclude": {
+        "**/bk*": true
+    },
     //// global extension specific settings
     "clang-format.style": "file",
     //// language specific settings
