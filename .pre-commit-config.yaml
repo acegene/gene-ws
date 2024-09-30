@@ -1,0 +1,215 @@
+---
+## https://pre-commit.com/
+## https://pre-commit.com/hooks.html
+## Installation:
+##   pre-commit install
+default_install_hook_types: [commit-msg, pre-commit, pre-push]
+default_language_version:
+  python: python3.10
+default_stages: [pre-commit, pre-push]
+exclude: \.deprecated
+repos:
+  ## dbg
+  - repo: meta
+    hooks:
+      # - id: check-hooks-apply
+      # - id: check-useless-excludes
+      - id: identity
+  ## pre-commit tools
+  - repo: https://github.com/mxr/sync-pre-commit-deps
+    rev: e8d0a4d680f357e35382e9926919a9a1c5d775fa  # 240826
+    hooks:
+      - id: sync-pre-commit-deps
+  ## local
+  - repo: local
+    hooks:
+      - id: pylint  # pylint 3.3.1; astroid 3.3.4; Python 3.10.12
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        require_serial: true
+  ## general + python
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: ed714747d7acbc5790b171702bb012af3b0fe145  # 240826
+    hooks:
+      ## general
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      # - id: check-illegal-windows-names # does not exist yet
+      - id: check-merge-conflict
+        args: [--assume-in-merge]
+      - id: check-shebang-scripts-are-executable
+        exclude: .*\.template
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: file-contents-sorter
+      - id: mixed-line-ending
+        args: [--fix=no]
+      - id: name-tests-test
+      # - id: no-commit-to-branch
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      ## python
+      - id: check-ast
+      - id: check-builtin-literals
+        args: [--no-allow-dict-kwargs]
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: name-tests-test
+        args: [--pytest]
+      - id: requirements-txt-fixer
+  ## bazel  # TODO: .buildifier.json (not used by vscode ext)
+  - repo: https://github.com/keith/pre-commit-buildifier
+    rev: 51851c1be6d3311fc37f7ca316b95dd93a0a61d3  # 240827
+    hooks:
+      - id: buildifier
+      - id: buildifier-lint
+  ## c++
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: cc73837e250e1b620f6165c52c2d5f339dd2fe60  # 240924
+    hooks:
+      - id: clang-format
+        args: [-style=file]
+        types_or: [c++, c, cuda]
+  ## docker
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.0-beta
+    hooks:
+      - id: hadolint-docker  # sudo usermod -aG docker $USER  # restart or logout necessary
+        args: [--config, ".hadolint.yaml"]
+  ## git
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: 4d9119760056492eabc201bfad5de2f9e660b85f  # 230902
+    hooks:
+      - id: gitlint
+        args: [--staged, --msg-filename]
+        stages: [commit-msg]
+  ## github action
+  - repo: https://github.com/rhysd/actionlint
+    rev: aa1a6d2e1d2c33257f8257c2ffab0dc3f1982cb0  # 240927
+    hooks:
+      - id: actionlint
+  ## js
+  - repo: https://github.com/aufdenpunkt/pre-commit-js-beautify
+    rev: 92dfd90fcab0cae8eb29cdbf3dfa0827233aad71  # 240807 # version of JS Beautify as well
+    hooks:
+      - id: js-beautify
+        files: |
+          (?x)^(
+              .*\.js|
+              .*\.json|
+              .*\.jsonc|
+              .*\.json5
+          )$
+        ## json
+  - repo: https://gitlab.com/bmares/check-json5
+    rev: db9b5c0f76dea9b0f28097b4421e4b40f39b2266  # 211204
+    hooks:
+      - id: check-json5
+        files: |
+          (?x)^(
+              .*\.json|
+              .*\.jsonc|
+              .*\.json5
+          )$
+  ## makefile
+  - repo: https://github.com/mrtazz/checkmake.git
+    rev: bd26d7905e47713ff0bf3b0e5e7b9c55f0d24e53  # 230817
+    hooks:
+      - id: checkmake
+  ## markdown
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: 41fc308f0d7f2647f0ae2c2d3826f48e42d964f4  # 240112
+    hooks:
+      - id: markdownlint
+        exclude: LICENSE\.md
+  ## python
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: 3f2e684cc4a6c250026418b600ca305e69830ad1  # 240826
+    hooks:
+      - id: add-trailing-comma
+  - repo: https://github.com/PyCQA/bandit
+    rev: 36fd65054fc8864b4037d0918904f9331512feb5  # 240923
+    hooks:
+      - id: bandit
+        stages: [manual]
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: f7aa1f9a50202a2cd7cef269f8d83f5ac91b2915  # 240806
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/docformatter
+    rev: 886a0329b3949dfb8be9f10f80bc96829923debe  # 240731
+    hooks:
+      - id: docformatter
+        additional_dependencies: [tomli]
+        args: [--in-place]
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: 040ba0fa471cd784f0c1af944f1fdb72ca8eb46f  # 240826
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-blanket-type-ignore
+      - id: python-check-mock-methods
+      - id: python-no-eval
+      - id: python-no-log-warn
+      - id: python-use-type-annotations
+      - id: rst-backticks
+      - id: rst-directive-colons
+      - id: rst-inline-touching-normal
+      - id: text-unicode-replacement-char
+  - repo: https://github.com/asottile/pyupgrade
+    rev: 0f1d07c371ab18d8b17082bd5ddb3020659446b3  # 240826
+    hooks:
+      - id: pyupgrade
+        args: [--py310-plus]
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: e19ed445eec9b7f7b213bb589c98ed17e6809944  # 240826
+    hooks:
+      - id: reorder-python-imports
+        args: [--py37-plus]
+  - repo: https://github.com/asottile/setup-cfg-fmt
+    rev: 9f0f40623bfa1343c063c59b14c8007ddf941b77  # 240826
+    hooks:
+      - id: setup-cfg-fmt
+  - repo: https://github.com/asottile/yesqa
+    rev: 904a50eb292c09dcdfef07c2b7132623a0edbc51  # 240826
+    hooks:
+      - id: yesqa
+  ## shell
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: 0996aaccb1d55c9cc1cb917c60e2711b86d4b0b9  # 240820
+    hooks:
+      - id: shfmt
+  - repo: https://github.com/openstack/bashate
+    rev: 6155afbcedba78aabc4b60815479779f5a331dca  # 240919
+    hooks:
+      - id: bashate
+        args: ["-i=E006,E010"]
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: e664a1eaf437703ac8b9e85c7e20a4b346ba7b5f  # 240805
+    hooks:
+      - id: shellcheck
+  ## yaml
+  - repo: https://github.com/google/yamlfmt
+    rev: 86b7c4bc819700c69b05b61a77acd422d8895941  # 240921
+    hooks:
+      - id: yamlfmt
+        args: ["-debug", "all"]
+        files: |
+          (?x)^(
+              \.clang-format|
+              .*\.yaml|
+              .*\.yml
+          )$
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: f0c0c7586b97809289bdcfe83a66363330b645d8  # 240918
+    hooks:
+      - id: yamllint
+        args: [--strict]

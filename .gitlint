@@ -1,0 +1,36 @@
+## https://jorisroovers.com/gitlint/latest/configuration/gitlint_file/
+
+[general]
+ignore=T3,T5,T7,B1,B5,B6,B7
+
+# verbosity should be a value between 1 and 3
+verbosity = 3
+
+# By default gitlint will ignore certain commits
+ignore-merge-commits=true
+ignore-revert-commits=true
+ignore-fixup-commits=true
+ignore-fixup-amend-commits=true
+ignore-squash-commits=true
+
+# Ignore any data sent to gitlint via stdin
+ignore-stdin=true
+
+# Fetch additional meta-data from the local repository when manually passing a
+# commit message to gitlint via stdin or --commit-msg. Disabled by default.
+staged=true
+
+# Hard fail when the target commit range is empty.
+fail-without-commits=true
+
+[title-max-length]
+line-length=80
+
+[body-max-line-length]
+line-length=120
+
+[body-min-length]
+min-length=5
+
+[ignore-body-lines]
+regex=^Co-Authored-By

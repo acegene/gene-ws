@@ -1,0 +1,11 @@
+## This is unused as prettier seems to have broken many plugins as of 240930
+## prettier follows .gitignore by default
+
+**/.clang-format
+**/*.markdown
+**/*.md
+**/*.mdx
+**/*.yaml
+**/*.yml
+
+**/third-party

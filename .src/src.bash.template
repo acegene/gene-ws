@@ -16,6 +16,16 @@ export GWSAHK="${GWSWIN}/ahk"
 export GWSPS="${GWSWIN}/ps1"
 export GWSPY="${GWSS}/py"
 export GWSSH="${GWSS}/shell"
+## purposefully place submodules before modules
+export GWS_SUBMODULES=(
+    "${GWSA}"
+    "${GWSLEW}"
+    "${GWSL}"
+    "${GWSM}"
+    "${GWSAHK}"
+    "${GWSSH}"
+    "${GWSS}"
+)
 
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${GWSA}/bin"

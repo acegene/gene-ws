@@ -43,15 +43,15 @@
         "[c]": { "editor.defaultFormatter": "xaver.clang-format" },
         "[cpp]": { "editor.defaultFormatter": "xaver.clang-format" },
         "[csharp]": { "editor.defaultFormatter": "xaver.clang-format" },
-        "[css]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[css]": { "editor.defaultFormatter": "vsce-toolroom.vscode-beautify" },
         "[dockerfile]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-        "[html]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[html]": { "editor.defaultFormatter": "vsce-toolroom.vscode-beautify" },
         "[hosts]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
         "[ignore]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
         "[java]": { "editor.defaultFormatter": "xaver.clang-format" },
-        "[javascript]": { "editor.defaultFormatter": "HookyQR.beautify" },
-        "[json]": { "editor.defaultFormatter": "HookyQR.beautify" },
-        "[jsonc]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[javascript]": { "editor.defaultFormatter": "vsce-toolroom.vscode-beautify" },
+        "[json]": { "editor.defaultFormatter": "vsce-toolroom.vscode-beautify" },
+        "[jsonc]": { "editor.defaultFormatter": "vsce-toolroom.vscode-beautify" },
         "[jvmoptions]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
         "[markdown]": { "files.trimTrailingWhitespace": false },
         "[objective-c]": { "editor.defaultFormatter": "xaver.clang-format" },
@@ -74,8 +74,8 @@
         // python3 -m pip install mypy
         "mypy.enabled": true,
         // python3 -m pip install pylint
-        "[sass]": { "editor.defaultFormatter": "HookyQR.beautify" },
+        "[sass]": { "editor.defaultFormatter": "vsce-toolroom.vscode-beautify" },
         "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
-        "[starlark]": {}
+        "[starlark]": { "editor.defaultFormatter": "BazelBuild.vscode-bazel" }
     }
 }

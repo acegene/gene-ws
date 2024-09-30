@@ -1,15 +1,16 @@
+---
+## This is unused as prettier seems to have broken many plugins as of 240930
 ## values set by .editorconfig
-# endOfLine
-# printWidth
-# tabWidth
-# useTabs
-
-arrowParens: "always"
+arrowParens: 'always'
 bracketSameLine: false
 bracketSpacing: false
+endOfLine: lf
 experimentalTernaries: true
 jsxSingleQuote: false
-quoteProps: "as-needed"
+printWidth: 120
+quoteProps: 'as-needed'
 semi: false
 singleQuote: true
-trailingComma: "es5"
+tabWidth: 4
+trailingComma: 'es5'
+useTabs: false

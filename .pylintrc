@@ -2,11 +2,12 @@
 
 [MASTER]
 ignore=.git,
-       CVS
+       CVS,
+       .deprecated
 jobs=0
 limit-inference-results=100
 persistent=yes
-py-version=3.8
+py-version=3.10
 suggestion-mode=yes
 unsafe-load-any-extension=no
 
@@ -89,9 +90,9 @@ notes=FIXME,
 [SIMILARITIES]
 ignore-comments=yes
 ignore-docstrings=yes
-ignore-imports=no
-ignore-signatures=no
-min-similarity-lines=4
+ignore-imports=yes
+ignore-signatures=yes
+min-similarity-lines=10
 
 [SPELLING]
 max-spelling-suggestions=4
@@ -148,6 +149,7 @@ max-bool-expr=5
 max-branches=12
 max-locals=15
 max-parents=7
+max-positional-arguments=7
 max-public-methods=20
 max-returns=6
 max-statements=50

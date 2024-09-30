@@ -3,6 +3,7 @@
     "comma_first": false,
     "keep_array_indentation": false,
     "eol": "\n",
+    "end_with_comma": false,
     "end_with_newline": true,
     "indent_char": " ",
     "indent_empty_lines": false,

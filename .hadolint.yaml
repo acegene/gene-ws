@@ -1,0 +1,24 @@
+---
+failure-threshold: warning  # name of threshold level (error | warning | info | style | ignore | none)
+format: tty  # Output format (tty | json | checkstyle | codeclimate | gitlab_codeclimate | gnu | codacy)
+# ignored: [string]                     # list of rules
+ignored:
+  - DL3018  # "Use --no-cache or --update with apk add" warning
+# label-schema:                         # See Linting Labels below for specific label-schema details
+#   author: string                      # Your name
+#   contact: string                     # email address
+#   created: timestamp                  # rfc3339 datetime
+#   version: string                     # semver
+#   documentation: string               # url
+#   git-revision: string                # hash
+#   license: string                     # spdx
+no-color: false  # true | false
+no-fail: false  # true | false
+# override:
+#   error: [string]                     # list of rules
+#   warning: [string]                   # list of rules
+#   info: [string]                      # list of rules
+#   style: [string]                     # list of rules
+strict-labels: true  # true | false
+disable-ignore-pragma: true  # true | false
+# trustedRegistries: string | [string]  # registry or list of registries

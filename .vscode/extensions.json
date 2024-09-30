@@ -5,7 +5,7 @@
         "EditorConfig.EditorConfig",
         "ms-vsliveshare.vsliveshare",
         // multi-language
-        "hookyqr.beautify", // javascript, json, css, sass, html TODO: deprecated
+        "vsce-toolroom.vscode-beautify", // javascript, json, css, sass, html
         "xaver.clang-format", // c, c++, java, javascript, objective-c, objective-c++, protobuf
         // ahk2
         "thqby.vscode-autohotkey2-lsp",
