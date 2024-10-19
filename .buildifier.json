@@ -1,0 +1,7 @@
+{
+    "allowsort": [],
+    "diff_command": "diff",
+    "lint": "fix",
+    "mode": "fix",
+    "warningsList": []
+}

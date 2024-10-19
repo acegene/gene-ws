@@ -29,6 +29,7 @@ disable=
         useless-suppression,
         ## user specified
         line-too-long,
+        logging-fstring-interpolation,
         unnecessary-lambda-assignment,
 enable=c-extension-no-member
 

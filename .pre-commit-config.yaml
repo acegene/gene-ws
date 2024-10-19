@@ -66,15 +66,28 @@ repos:
       - id: name-tests-test
         args: [--pytest]
       - id: requirements-txt-fixer
-  ## bazel  # TODO: .buildifier.json (not used by vscode ext)
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 38980559e3a605691d6579f96222c30778e5a69e  # 220803
+    hooks:
+      - id: git-check
+      - id: forbid-binary
+        exclude: |
+          (?x)^(
+              ^games/yugioh/.*\.dat|
+              ^hearth/.*\.png|
+              ^win/.*  # TODO: these files should be rm'd from git
+          )$
+  ## bazel # .buildifier.json (not used by vscode ext)
   - repo: https://github.com/keith/pre-commit-buildifier
     rev: 51851c1be6d3311fc37f7ca316b95dd93a0a61d3  # 240827
     hooks:
       - id: buildifier
+        args: ["-diff_command=diff"]
       - id: buildifier-lint
+        args: ["-diff_command=diff"]
   ## c++
   - repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: cc73837e250e1b620f6165c52c2d5f339dd2fe60  # 240924
+    rev: a8c7c3ac16eabd3b958952ea0d6bf1dceeab6411  # 241016 # clang-format 19 (19.1.2)
     hooks:
       - id: clang-format
         args: [-style=file]
@@ -109,7 +122,7 @@ repos:
               .*\.jsonc|
               .*\.json5
           )$
-        ## json
+  ## json
   - repo: https://gitlab.com/bmares/check-json5
     rev: db9b5c0f76dea9b0f28097b4421e4b40f39b2266  # 211204
     hooks:
