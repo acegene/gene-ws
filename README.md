@@ -20,8 +20,6 @@ This repo's submodules with the following will have their corresponding scripts 
 
 ### Initialize Repo (bash/gitbash)
 
-- via bash/gitbash
-
 Clone repo
 
 ```bash
@@ -48,25 +46,24 @@ Init shell configurations
 
 ```bash
 cd "${dir_for_repo}/gene-ws" &&
-.init/init.bash --os mint
-## open new shell to continue
+.init/init.py
+## open new shell to resource newly modified ~/.bashrc
 ```
 
 Setup linter and formatter files
 
 ```bash
-python3 "$GWSPY/actions.py" --yaml "$GWSPY/actions-jsons/cp_cfgs.yaml"
+python3 "$GWSPY/actions.py" --yaml "$GWSPY/actions-yamls/cp-cfgs.yaml"
 ```
 
-### Add Configs
+Setup precommit for gene-ws and relevant submodules within it
 
-- `cd <GENE_WS_PATH>`
-- depenmding on OS, execute the following:
-    - mint -> via bash: `.init/init.bash --os <NAME_OS>`
-    - ubuntu -> via bash: `.init/init.bash --os <NAME_OS>`
-    - win -> via gitbash: `.init/init.bash --os <NAME_OS>`; via powershell `.init/init.ps1`
-    - wsl-ubuntu -> via bash: `.init/init.bash --os <NAME_OS>`
-    - other flavors of linux/unix -> via bash: `.init/init.bash --os ubuntu` # untested
+```bash
+python3 -m pip install pre-commit &&
+cd "$GWS" &&
+pre-commit install &&
+gws-gsf 'pre-commit install'
+```
 
 ## Editors
 

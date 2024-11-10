@@ -2,6 +2,7 @@
 ## https://pre-commit.com/
 ## https://pre-commit.com/hooks.html
 ## Installation:
+##   python3 -m pip install pre-commit
 ##   pre-commit install
 default_install_hook_types: [commit-msg, pre-commit, pre-push]
 default_language_version:
